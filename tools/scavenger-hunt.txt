@@ -2,14 +2,14 @@
 
 Commands listed below are for WSL unless stated otherwise
 
-2. ping, nslookup
+2. ping, nslookup [host_name], host [host_name]
 
-3. nslookup
+3. nslookup [host_IP], host [host_IP]
 
 4. nc
 
 5. netstat (pipe through grep :port_number to find a specific port),
-   lsof -i [:port_number], ss, nc -v -n [host IP] [port]
+   lsof -i [:port_number], ss, nc -v -n [host_IP] [port]
 
 6. netstat -lntup, nmap (-O for OS scanning) [host]
 
