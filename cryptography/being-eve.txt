@@ -1,0 +1,64 @@
+Ben Aoki-Sherwood, Kenyon Nystrom, Avery Watts
+
+Diffie-Hellman
+
+We used a brute force Python program to loop over the first 50 possible values
+of Alice and Bob’s secret random numbers a and b, checking to see if our guesses
+would lead to the second set of numbers they sent, A = 46 and B = 5.
+The Python code is below.
+
+print("Alice")
+for i in range(50):
+    if (17**i)%61==5:
+   	 print(i)
+
+print("Bob")
+for i in range(50):
+    if (17**i)%61==46:
+   	 print(i)
+
+From this code, we found that a = 26 and b = 14, so the shared secret is
+(46^14 mod p) = (5^26 mod p) = 57.
+
+This method would have failed if a or b were much larger because we would have
+gone through our for loop without ever hitting the correct power of 17.
+Even if we switched to a while loop, the increasingly large exponents applied
+to 17 would take longer and longer to compute, making it impractical to use this
+brute force method to find the shared secret. Furthermore, we would likely find
+multiple answers that satisfy the original equations, adding an even more
+ difficult task of matching potential a’s and b’s to one another.
+
+
+
+RSA
+
+We used a python script to brute-force factor n = 4661 and find the two primes
+p and q. However, if n was much larger, it would have taken a long time to go
+through our loop. We found that p = 59 and q = 79. Knowing that, we used the
+second half of the script below to find a value for d that satisfies the
+equation for d.
+
+for i in range(2, 4661):
+    if (4661 % i) == 0:
+   	 print("p = ", i)
+   	 print("q = ", (4661/i), "\n")
+
+sol = 0
+d = 0
+while sol != 1:
+    d += 1
+    sol = (31 * d) % (78 * 58)
+print(d)
+
+Again, if the numbers were very large, it would take a very long time to iterate
+through all possible values of d until we satisfied the condition, making this
+method impractical.
+We found d to be 2335, so Bob’s secret key is S = (2335, 4661).
+Knowing that, we decrypted Alice’s message by applying the secret key to the
+message, taking (x^d mod n) for each character Alice sent.
+We then converted the resulting ASCII values into their respective characters
+to get the plaintext in written form:
+
+“Dear Bob, Check this out.
+https://www.schneier.com/blog/archives/2017/12/e-mail_tracking_1.html Yikes!
+Your friend, Alice”
