@@ -1,0 +1,22 @@
+Ben Aoki-Sherwood, Kenyon Nystrom, and Avery wattsa2
+
+PART 1
+Passwords cracked: 1157
+Total time: 1:29.342
+Number of hashes computed: 267751
+Passwords cracked per number of hashes computed: 0.0043211
+Time per password cracked: 0.07722s
+
+PART 2
+Passwords cracked: 1132
+Total time: 25:56.701
+Number of hashes computed: 621455537
+Passwords cracked per number of hashes computed: 0.0000018215
+Time per password cracked: 1.375s
+
+Factor by which the time per password lengthened: 17.8. This was because we had
+to compute a lot more hashes (about 2000x more) to get each password than we
+did the first time. Without salting, we could test each hashed word against every
+password, but with a unique salt contributing to the hash of each password,
+we needed a new hash for every word/password attempt. This is why it took
+so much longer the second time.

@@ -6,7 +6,7 @@ Commands listed below are for WSL unless stated otherwise
 
 3. nslookup [host_IP], host [host_IP]
 
-4. nc
+4. nc, pscp, sftp
 
 5. netstat (pipe through grep :port_number to find a specific port),
    lsof -i [:port_number], ss, nc -v -n [host_IP] [port]
